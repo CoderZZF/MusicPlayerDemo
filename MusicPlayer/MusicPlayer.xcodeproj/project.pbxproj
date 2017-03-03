@@ -75,6 +75,8 @@
 		2BCC21331E686B3500F46A15 /* XMGAudioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC211D1E686B3500F46A15 /* XMGAudioTool.m */; };
 		2BCC21371E686BAA00F46A15 /* XMGPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC21361E686BAA00F46A15 /* XMGPlayingViewController.m */; };
 		2BCC213A1E688DFD00F46A15 /* XMGMusicTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC21391E688DFD00F46A15 /* XMGMusicTool.m */; };
+		2BCC21401E689AF600F46A15 /* CALayer+PauseAimate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC213D1E689AF600F46A15 /* CALayer+PauseAimate.m */; };
+		2BCC21411E689AF600F46A15 /* NSString+XMGTimeExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC213F1E689AF600F46A15 /* NSString+XMGTimeExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -177,6 +179,10 @@
 		2BCC21361E686BAA00F46A15 /* XMGPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGPlayingViewController.m; sourceTree = "<group>"; };
 		2BCC21381E688DFD00F46A15 /* XMGMusicTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMGMusicTool.h; sourceTree = "<group>"; };
 		2BCC21391E688DFD00F46A15 /* XMGMusicTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGMusicTool.m; sourceTree = "<group>"; };
+		2BCC213C1E689AF600F46A15 /* CALayer+PauseAimate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+PauseAimate.h"; sourceTree = "<group>"; };
+		2BCC213D1E689AF600F46A15 /* CALayer+PauseAimate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+PauseAimate.m"; sourceTree = "<group>"; };
+		2BCC213E1E689AF600F46A15 /* NSString+XMGTimeExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XMGTimeExtension.h"; sourceTree = "<group>"; };
+		2BCC213F1E689AF600F46A15 /* NSString+XMGTimeExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XMGTimeExtension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,6 +340,7 @@
 		2BCC20ED1E686B3500F46A15 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				2BCC213B1E689AF600F46A15 /* Category */,
 				2BCC20EE1E686B3500F46A15 /* Lib */,
 			);
 			path = Other;
@@ -413,6 +420,17 @@
 				2BCC21391E688DFD00F46A15 /* XMGMusicTool.m */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		2BCC213B1E689AF600F46A15 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				2BCC213C1E689AF600F46A15 /* CALayer+PauseAimate.h */,
+				2BCC213D1E689AF600F46A15 /* CALayer+PauseAimate.m */,
+				2BCC213E1E689AF600F46A15 /* NSString+XMGTimeExtension.h */,
+				2BCC213F1E689AF600F46A15 /* NSString+XMGTimeExtension.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -543,6 +561,7 @@
 				2BCC212E1E686B3500F46A15 /* MJType.m in Sources */,
 				2BCC21321E686B3500F46A15 /* NSString+MJExtension.m in Sources */,
 				2BCC21261E686B3500F46A15 /* MASViewConstraint.m in Sources */,
+				2BCC21411E689AF600F46A15 /* NSString+XMGTimeExtension.m in Sources */,
 				2BCC21251E686B3500F46A15 /* MASViewAttribute.m in Sources */,
 				2BCC21291E686B3500F46A15 /* View+MASAdditions.m in Sources */,
 				2BCC21331E686B3500F46A15 /* XMGAudioTool.m in Sources */,
@@ -552,6 +571,7 @@
 				2BCC207D1E68666A00F46A15 /* main.m in Sources */,
 				2BCC21211E686B3500F46A15 /* MASCompositeConstraint.m in Sources */,
 				2BCC21281E686B3500F46A15 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				2BCC21401E689AF600F46A15 /* CALayer+PauseAimate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
