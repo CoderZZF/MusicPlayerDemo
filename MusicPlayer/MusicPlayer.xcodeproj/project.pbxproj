@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2B41D2501E6968B400027054 /* XMGLrcCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B41D24F1E6968B400027054 /* XMGLrcCell.m */; };
+		2B41D2531E696BCE00027054 /* XMGLrcTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B41D2521E696BCE00027054 /* XMGLrcTool.m */; };
+		2B41D2561E696FF200027054 /* XMGLrcLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B41D2551E696FF200027054 /* XMGLrcLine.m */; };
 		2BCC207D1E68666A00F46A15 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC207C1E68666A00F46A15 /* main.m */; };
 		2BCC20801E68666A00F46A15 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC207F1E68666A00F46A15 /* AppDelegate.m */; };
 		2BCC20861E68666A00F46A15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCC20841E68666A00F46A15 /* Main.storyboard */; };
@@ -84,6 +86,10 @@
 /* Begin PBXFileReference section */
 		2B41D24E1E6968B400027054 /* XMGLrcCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMGLrcCell.h; sourceTree = "<group>"; };
 		2B41D24F1E6968B400027054 /* XMGLrcCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGLrcCell.m; sourceTree = "<group>"; };
+		2B41D2511E696BCE00027054 /* XMGLrcTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMGLrcTool.h; sourceTree = "<group>"; };
+		2B41D2521E696BCE00027054 /* XMGLrcTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGLrcTool.m; sourceTree = "<group>"; };
+		2B41D2541E696FF200027054 /* XMGLrcLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMGLrcLine.h; sourceTree = "<group>"; };
+		2B41D2551E696FF200027054 /* XMGLrcLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGLrcLine.m; sourceTree = "<group>"; };
 		2BCC20781E68666A00F46A15 /* MusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BCC207C1E68666A00F46A15 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2BCC207E1E68666A00F46A15 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -340,6 +346,8 @@
 			children = (
 				2BCC20EB1E686B3500F46A15 /* XMGMusic.h */,
 				2BCC20EC1E686B3500F46A15 /* XMGMusic.m */,
+				2B41D2541E696FF200027054 /* XMGLrcLine.h */,
+				2B41D2551E696FF200027054 /* XMGLrcLine.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -425,6 +433,8 @@
 				2BCC211D1E686B3500F46A15 /* XMGAudioTool.m */,
 				2BCC21381E688DFD00F46A15 /* XMGMusicTool.h */,
 				2BCC21391E688DFD00F46A15 /* XMGMusicTool.m */,
+				2B41D2511E696BCE00027054 /* XMGLrcTool.h */,
+				2B41D2521E696BCE00027054 /* XMGLrcTool.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -572,7 +582,9 @@
 				2BCC212A1E686B3500F46A15 /* ViewController+MASAdditions.m in Sources */,
 				2BCC21241E686B3500F46A15 /* MASLayoutConstraint.m in Sources */,
 				2BCC212D1E686B3500F46A15 /* MJProperty.m in Sources */,
+				2B41D2531E696BCE00027054 /* XMGLrcTool.m in Sources */,
 				2B41D2501E6968B400027054 /* XMGLrcCell.m in Sources */,
+				2B41D2561E696FF200027054 /* XMGLrcLine.m in Sources */,
 				2BCC21301E686B3500F46A15 /* NSObject+MJKeyValue.m in Sources */,
 				2BCC212C1E686B3500F46A15 /* MJFoundation.m in Sources */,
 				2BCC21371E686BAA00F46A15 /* XMGPlayingViewController.m in Sources */,

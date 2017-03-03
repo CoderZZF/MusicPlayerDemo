@@ -112,10 +112,13 @@
     self.currentPlayer = currentPlayer;
     self.playOrPauseButton.selected = self.currentPlayer.isPlaying;
     
-    // 4. 开始播放动画
+    // 4. 设置歌词
+    self.lrcView.lrcName = playingMusic.lrcname;
+    
+    // 5. 开始播放动画
     [self startIconAnimate];
     
-    // 5. 添加定时器用户更新进度界面
+    // 6. 添加定时器用户更新进度界面
     [self removeProgressTimer];
     [self addProgressTimer];
 }

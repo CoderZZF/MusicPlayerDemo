@@ -9,9 +9,13 @@
 #import "XMGLrcView.h"
 #import "Masonry.h"
 #import "XMGLrcCell.h"
+#import "XMGLrcTool.h"
+#import "XMGLrcLine.h"
 
 @interface XMGLrcView () <UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
+/** 歌词的数组 */
+@property (nonatomic, strong) NSArray *lrcList;
 @end
 
 @implementation XMGLrcView
@@ -66,7 +70,7 @@
 
 #pragma mark - 实现tableView的数据源方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.lrcList.count;
 }
 
 
@@ -75,8 +79,26 @@
     XMGLrcCell *cell = [XMGLrcCell lrcCellWithTableView:tableView];
     
     // 2. 给cell设置数据
-    cell.textLabel.text = [NSString stringWithFormat:@"测试数据 - %ld", indexPath.row];
+    // 2.1 取出模型
+    XMGLrcLine *lrcLine = self.lrcList[indexPath.row];
+    
+    // 2.2 给cell设置数据
+    cell.textLabel.text = lrcLine.text;
     
     return cell;
+}
+
+
+#pragma mark - 重写setLrcName方法
+- (void)setLrcName:(NSString *)lrcName {
+    // 1. 保存歌词名称
+    _lrcName = lrcName;
+    
+    // 2. 解析歌词
+    self.lrcList = [XMGLrcTool lrcToolWithLrcName:lrcName];
+    
+    
+    // 3. 刷新表格
+    [self.tableView reloadData];
 }
 @end

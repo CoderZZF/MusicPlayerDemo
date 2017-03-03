@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface XMGLrcView : UIScrollView
+/** 歌词 */
+@property (nonatomic, copy) NSString *lrcName;
 
 @end
