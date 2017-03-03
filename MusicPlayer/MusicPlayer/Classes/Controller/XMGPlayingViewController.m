@@ -12,10 +12,12 @@
 #import "XMGMusic.h"
 #import "XMGAudioTool.h"
 #import "NSString+XMGTimeExtension.h"
+#import "CALayer+PauseAimate.h"
+#import "XMGLrcView.h"
 
 #define XMGColor(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
 
-@interface XMGPlayingViewController ()
+@interface XMGPlayingViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *albumView;
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
 @property (weak, nonatomic) IBOutlet UILabel *songLabel;
@@ -24,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
 @property (weak, nonatomic) IBOutlet UISlider *progressSlider;
 @property (weak, nonatomic) IBOutlet UIButton *playOrPauseButton;
+@property (weak, nonatomic) IBOutlet XMGLrcView *lrcView;
+@property (weak, nonatomic) IBOutlet UILabel *lrcLabel;
 
 /** 定时器 */
 @property (nonatomic, strong) NSTimer *progressTimer;
@@ -35,6 +39,11 @@
 - (IBAction)sliderValueChange:(id)sender;
 - (IBAction)endSlide:(id)sender;
 - (IBAction)sliderClick:(UITapGestureRecognizer *)sender;
+
+#pragma mark- 歌曲控制的事件处理
+- (IBAction)playOrPause;
+- (IBAction)previous;
+- (IBAction)next;
 @end
 
 @implementation XMGPlayingViewController
@@ -50,6 +59,9 @@
     
     // 3. 展示界面信息
     [self startPlayingMusic];
+    
+    // 4. 设置lrcView的contentSize
+    self.lrcView.contentSize = CGSizeMake(self.view.bounds.size.width * 2, 0);
 }
 
 
@@ -180,4 +192,69 @@
     [self updateProgressInfo];
 }
 
+#pragma mark- 歌曲控制的事件处理
+- (IBAction)playOrPause {
+    self.playOrPauseButton.selected = !self.playOrPauseButton.selected;
+    
+    if (self.currentPlayer.playing) {
+        [self.currentPlayer pause];
+        
+        [self removeProgressTimer];
+        
+        // 暂停动画
+        [self.iconView.layer pauseAnimate];
+    } else {
+        [self.currentPlayer play];
+        
+        [self addProgressTimer];
+        
+        // 恢复动画
+        [self.iconView.layer resumeAnimate];
+    }
+}
+
+- (IBAction)previous {
+    // 1. 获取上一首歌曲
+    XMGMusic *previousMusic = [XMGMusicTool previousMusic];
+    
+    // 2. 播放上一首歌曲
+    [self playingMusicWithMusic:previousMusic];
+}
+
+- (IBAction)next {
+    // 1. 获取下一首歌曲
+    XMGMusic *nextMusic = [XMGMusicTool nextMusic];
+    
+    // 2. 播放下一首歌曲
+    [self playingMusicWithMusic:nextMusic];
+}
+
+
+- (void)playingMusicWithMusic:(XMGMusic *)Music {
+    // 1. 停止当前歌曲
+    XMGMusic *playingMusic = [XMGMusicTool playingMusic];
+    [XMGAudioTool stopMusicWithMusicName:playingMusic.filename];
+    
+    // 2. 播放歌曲
+    [XMGAudioTool playMusicWithMusicName:Music.filename];
+    
+    // 3. 将工具类中的当前歌曲切换成播放的歌曲
+    [XMGMusicTool setPlayingMusic:Music];
+    
+    // 4. 改变界面信息
+    [self startPlayingMusic];
+}
+
+#pragma mark - 实现UIScrollView的代理方法
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    // 1. 获取滑动的多少
+    CGPoint point = scrollView.contentOffset;
+    
+    // 2. 计算滑动比例
+    CGFloat ratio = 1 - point.x / scrollView.bounds.size.width;
+    
+    // 3. 设置iconView和歌词label的透明度
+    self.iconView.alpha = ratio;
+    self.lrcLabel.alpha = ratio;
+}
 @end

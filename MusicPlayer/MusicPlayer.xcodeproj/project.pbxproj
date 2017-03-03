@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B41D2501E6968B400027054 /* XMGLrcCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B41D24F1E6968B400027054 /* XMGLrcCell.m */; };
 		2BCC207D1E68666A00F46A15 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC207C1E68666A00F46A15 /* main.m */; };
 		2BCC20801E68666A00F46A15 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC207F1E68666A00F46A15 /* AppDelegate.m */; };
 		2BCC20861E68666A00F46A15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCC20841E68666A00F46A15 /* Main.storyboard */; };
@@ -77,9 +78,12 @@
 		2BCC213A1E688DFD00F46A15 /* XMGMusicTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC21391E688DFD00F46A15 /* XMGMusicTool.m */; };
 		2BCC21401E689AF600F46A15 /* CALayer+PauseAimate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC213D1E689AF600F46A15 /* CALayer+PauseAimate.m */; };
 		2BCC21411E689AF600F46A15 /* NSString+XMGTimeExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC213F1E689AF600F46A15 /* NSString+XMGTimeExtension.m */; };
+		2BCC21451E69578A00F46A15 /* XMGLrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC21441E69578A00F46A15 /* XMGLrcView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B41D24E1E6968B400027054 /* XMGLrcCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMGLrcCell.h; sourceTree = "<group>"; };
+		2B41D24F1E6968B400027054 /* XMGLrcCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGLrcCell.m; sourceTree = "<group>"; };
 		2BCC20781E68666A00F46A15 /* MusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BCC207C1E68666A00F46A15 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2BCC207E1E68666A00F46A15 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 		2BCC213D1E689AF600F46A15 /* CALayer+PauseAimate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+PauseAimate.m"; sourceTree = "<group>"; };
 		2BCC213E1E689AF600F46A15 /* NSString+XMGTimeExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XMGTimeExtension.h"; sourceTree = "<group>"; };
 		2BCC213F1E689AF600F46A15 /* NSString+XMGTimeExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XMGTimeExtension.m"; sourceTree = "<group>"; };
+		2BCC21431E69578A00F46A15 /* XMGLrcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMGLrcView.h; sourceTree = "<group>"; };
+		2BCC21441E69578A00F46A15 /* XMGLrcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGLrcView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +319,7 @@
 			children = (
 				2BCC211B1E686B3500F46A15 /* Tools */,
 				2BCC20EA1E686B3500F46A15 /* Model */,
+				2BCC21421E69577400F46A15 /* View */,
 				2BCC20E91E686B3500F46A15 /* Controller */,
 				2BCC20ED1E686B3500F46A15 /* Other */,
 			);
@@ -431,6 +438,17 @@
 				2BCC213F1E689AF600F46A15 /* NSString+XMGTimeExtension.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		2BCC21421E69577400F46A15 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2BCC21431E69578A00F46A15 /* XMGLrcView.h */,
+				2BCC21441E69578A00F46A15 /* XMGLrcView.m */,
+				2B41D24E1E6968B400027054 /* XMGLrcCell.h */,
+				2B41D24F1E6968B400027054 /* XMGLrcCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -554,11 +572,13 @@
 				2BCC212A1E686B3500F46A15 /* ViewController+MASAdditions.m in Sources */,
 				2BCC21241E686B3500F46A15 /* MASLayoutConstraint.m in Sources */,
 				2BCC212D1E686B3500F46A15 /* MJProperty.m in Sources */,
+				2B41D2501E6968B400027054 /* XMGLrcCell.m in Sources */,
 				2BCC21301E686B3500F46A15 /* NSObject+MJKeyValue.m in Sources */,
 				2BCC212C1E686B3500F46A15 /* MJFoundation.m in Sources */,
 				2BCC21371E686BAA00F46A15 /* XMGPlayingViewController.m in Sources */,
 				2BCC21271E686B3500F46A15 /* NSArray+MASAdditions.m in Sources */,
 				2BCC212E1E686B3500F46A15 /* MJType.m in Sources */,
+				2BCC21451E69578A00F46A15 /* XMGLrcView.m in Sources */,
 				2BCC21321E686B3500F46A15 /* NSString+MJExtension.m in Sources */,
 				2BCC21261E686B3500F46A15 /* MASViewConstraint.m in Sources */,
 				2BCC21411E689AF600F46A15 /* NSString+XMGTimeExtension.m in Sources */,
@@ -637,7 +657,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -678,7 +698,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -730,6 +750,7 @@
 				2BCC20911E68666A00F46A15 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

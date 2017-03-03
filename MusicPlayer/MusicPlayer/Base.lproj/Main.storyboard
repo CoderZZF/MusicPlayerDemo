@@ -61,6 +61,9 @@
                                         </constraints>
                                         <state key="normal" image="player_btn_play_normal"/>
                                         <state key="selected" image="player_btn_pause_normal"/>
+                                        <connections>
+                                            <action selector="playOrPause" destination="BYZ-38-t0r" eventType="touchUpInside" id="cuM-bi-EL9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7VH-U1-hc8">
                                         <constraints>
@@ -68,9 +71,15 @@
                                             <constraint firstAttribute="height" constant="64" id="FY8-3n-c4w"/>
                                         </constraints>
                                         <state key="normal" image="player_btn_next_normal"/>
+                                        <connections>
+                                            <action selector="next" destination="BYZ-38-t0r" eventType="touchUpInside" id="3R1-tl-YL5"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fDT-az-yuK">
                                         <state key="normal" image="player_btn_pre_normal"/>
+                                        <connections>
+                                            <action selector="previous" destination="BYZ-38-t0r" eventType="touchUpInside" id="DZh-cR-8kl"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lr2-ZP-dId">
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -123,18 +132,28 @@
                                     <constraint firstAttribute="width" secondItem="EeD-Qc-7XF" secondAttribute="height" id="FYj-Qc-Shy"/>
                                 </constraints>
                             </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bnp-xl-Aru" customClass="XMGLrcView">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="K1R-G3-teu"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7ok-MG-wS8" firstAttribute="top" secondItem="EeD-Qc-7XF" secondAttribute="bottom" constant="30" id="3An-HW-kFc"/>
+                            <constraint firstItem="Bnp-xl-Aru" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8k2-Sm-lQ5"/>
                             <constraint firstItem="l97-6W-wEV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="AWf-Lp-gv9"/>
+                            <constraint firstAttribute="trailing" secondItem="Bnp-xl-Aru" secondAttribute="trailing" id="JYJ-OS-ulY"/>
                             <constraint firstItem="EeD-Qc-7XF" firstAttribute="top" secondItem="rkp-iX-ftJ" secondAttribute="bottom" constant="30" id="Nf6-N5-GN4"/>
+                            <constraint firstItem="l97-6W-wEV" firstAttribute="top" secondItem="Bnp-xl-Aru" secondAttribute="bottom" id="O3Y-fp-ANO"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bsU-Ws-R7X" secondAttribute="bottom" id="SXA-gm-htU"/>
                             <constraint firstItem="EeD-Qc-7XF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YAV-FC-Mc9"/>
                             <constraint firstAttribute="trailing" secondItem="l97-6W-wEV" secondAttribute="trailing" id="Yt4-7Q-SFv"/>
                             <constraint firstItem="bsU-Ws-R7X" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="Z8U-Oz-lmw"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="l97-6W-wEV" secondAttribute="bottom" id="ah6-qD-oqu"/>
                             <constraint firstItem="7ok-MG-wS8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="i0g-cN-XWx"/>
+                            <constraint firstItem="Bnp-xl-Aru" firstAttribute="top" secondItem="rkp-iX-ftJ" secondAttribute="bottom" id="jrH-fN-UcC"/>
                             <constraint firstItem="rkp-iX-ftJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lKS-ij-iu8"/>
                             <constraint firstAttribute="trailing" secondItem="bsU-Ws-R7X" secondAttribute="trailing" id="oLP-YN-1tB"/>
                             <constraint firstItem="bsU-Ws-R7X" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ur4-AE-bWc"/>
@@ -147,6 +166,8 @@
                         <outlet property="albumView" destination="bsU-Ws-R7X" id="odc-bc-e0d"/>
                         <outlet property="currentTimeLabel" destination="Lr2-ZP-dId" id="ruY-1P-sbT"/>
                         <outlet property="iconView" destination="EeD-Qc-7XF" id="HXr-jq-sDf"/>
+                        <outlet property="lrcLabel" destination="7ok-MG-wS8" id="0j0-02-O3P"/>
+                        <outlet property="lrcView" destination="Bnp-xl-Aru" id="1bn-Jy-fYC"/>
                         <outlet property="playOrPauseButton" destination="A5m-ev-jOi" id="lSf-z5-gx3"/>
                         <outlet property="progressSlider" destination="fVw-z8-CqS" id="MjX-yp-GZZ"/>
                         <outlet property="singerLabel" destination="4fV-5o-hJk" id="n79-fk-TWU"/>
@@ -161,7 +182,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="68" y="69"/>
+            <point key="canvasLocation" x="68" y="68.815592203898049"/>
         </scene>
     </scenes>
     <resources>
