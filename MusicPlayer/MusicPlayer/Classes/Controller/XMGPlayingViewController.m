@@ -31,6 +31,8 @@
 
 /** 定时器 */
 @property (nonatomic, strong) NSTimer *progressTimer;
+/** 歌词更新的定时器 */
+@property (nonatomic, strong) CADisplayLink *lrcTimer;
 /** 播放器 */
 @property (nonatomic, weak) AVAudioPlayer *currentPlayer;
 
@@ -121,6 +123,8 @@
     // 6. 添加定时器用户更新进度界面
     [self removeProgressTimer];
     [self addProgressTimer];
+    [self removeLrcTimer];
+    [self addLrcTimer];
 }
 
 - (void)startIconAnimate {
@@ -152,6 +156,16 @@
     self.progressTimer = nil;
 }
 
+- (void)addLrcTimer {
+    self.lrcTimer = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateLrc)];
+    [self.lrcTimer addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+}
+
+- (void)removeLrcTimer {
+    [self.lrcTimer invalidate];
+    self.lrcTimer = nil;
+}
+
 #pragma mark - 更新进度界面
 - (void)updateProgressInfo {
     // 1. 设置当前的播放时间
@@ -161,6 +175,11 @@
     self.progressSlider.value = self.currentPlayer.currentTime / self.currentPlayer.duration;
 }
 
+
+#pragma mark - 更新歌词
+- (void)updateLrc {
+    self.lrcView.currentTime = self.currentPlayer.currentTime;
+}
 
 
 #pragma mark- slider的事件处理

@@ -12,4 +12,7 @@
 /** 歌词 */
 @property (nonatomic, copy) NSString *lrcName;
 
+/** 时间 */
+@property (nonatomic, assign) NSTimeInterval currentTime;
+
 @end
