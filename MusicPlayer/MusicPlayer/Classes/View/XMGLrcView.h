@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class XMGLrcLabel;
 
 @interface XMGLrcView : UIScrollView
 /** 歌词 */
@@ -14,5 +15,8 @@
 
 /** 时间 */
 @property (nonatomic, assign) NSTimeInterval currentTime;
+
+/** 传入歌词的label */
+@property (nonatomic, weak) XMGLrcLabel *lrcLabel;
 
 @end

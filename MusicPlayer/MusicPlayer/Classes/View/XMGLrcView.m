@@ -11,6 +11,7 @@
 #import "XMGLrcCell.h"
 #import "XMGLrcTool.h"
 #import "XMGLrcLine.h"
+#import "XMGLrcLabel.h"
 
 @interface XMGLrcView () <UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -82,9 +83,10 @@
     
     // 刷新文字大小
     if (self.currentIndex == indexPath.row) {
-        cell.textLabel.font = [UIFont systemFontOfSize:20];
+        cell.lrcLabel.font = [UIFont systemFontOfSize:20];
     } else {
-        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.lrcLabel.font = [UIFont systemFontOfSize:14];
+        cell.lrcLabel.progress = 0;
     }
     
     // 2. 给cell设置数据
@@ -92,7 +94,7 @@
     XMGLrcLine *lrcLine = self.lrcList[indexPath.row];
     
     // 2.2 给cell设置数据
-    cell.textLabel.text = lrcLine.text;
+    cell.lrcLabel.text = lrcLine.text;
     
     return cell;
 }
@@ -131,16 +133,35 @@
         
         // 3. 用当前的时间和i位置的歌词进行比较,并且和下一句进行比较,如果大于i位置的时间,并且小于下一句的时间,那么显示当前的歌词
         if (self.currentIndex != i &&  currentTime >= currentLrcLine.time && currentTime < nextLrcLine.time) {
+            // 1. 获取当前的行号
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
             NSIndexPath *previousIndexPath = [NSIndexPath indexPathForRow:self.currentIndex inSection:0];
             
+            // 2. 记录当前i的行号
             self.currentIndex = i;
             
-            // 刷新当前的行和上一行
+            // 3. 刷新当前的行和上一行
             [self.tableView reloadRowsAtIndexPaths:@[indexPath, previousIndexPath] withRowAnimation:UITableViewRowAnimationNone];
             
-            // 刷新对应句的歌词
+            // 4. 刷新对应句的歌词
             [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+            
+            // 5. 设置外面歌词的label的显示歌词和时间
+            self.lrcLabel.text = currentLrcLine.text;
+        }
+        
+        // 4. 根据进度显示label要画多少
+        if (self.currentIndex == i) {
+            // 4.1 拿到i位置的cell
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+            XMGLrcCell *cell = (XMGLrcCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+            
+            // 4.2 更新label的进度
+            CGFloat progress = (currentTime - currentLrcLine.time) / (nextLrcLine.time - currentLrcLine.time);
+            cell.lrcLabel.progress = progress;
+            
+            // 4.3 设置外面歌词的进度
+            self.lrcLabel.progress = progress;
         }
     }
 }

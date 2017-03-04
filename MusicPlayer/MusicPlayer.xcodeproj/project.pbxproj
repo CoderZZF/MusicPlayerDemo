@@ -81,6 +81,7 @@
 		2BCC21401E689AF600F46A15 /* CALayer+PauseAimate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC213D1E689AF600F46A15 /* CALayer+PauseAimate.m */; };
 		2BCC21411E689AF600F46A15 /* NSString+XMGTimeExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC213F1E689AF600F46A15 /* NSString+XMGTimeExtension.m */; };
 		2BCC21451E69578A00F46A15 /* XMGLrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC21441E69578A00F46A15 /* XMGLrcView.m */; };
+		2BFA43831E6AF8A400D3A131 /* XMGLrcLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFA43821E6AF8A400D3A131 /* XMGLrcLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -195,6 +196,8 @@
 		2BCC213F1E689AF600F46A15 /* NSString+XMGTimeExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XMGTimeExtension.m"; sourceTree = "<group>"; };
 		2BCC21431E69578A00F46A15 /* XMGLrcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMGLrcView.h; sourceTree = "<group>"; };
 		2BCC21441E69578A00F46A15 /* XMGLrcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGLrcView.m; sourceTree = "<group>"; };
+		2BFA43811E6AF8A400D3A131 /* XMGLrcLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMGLrcLabel.h; sourceTree = "<group>"; };
+		2BFA43821E6AF8A400D3A131 /* XMGLrcLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGLrcLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -457,6 +460,8 @@
 				2BCC21441E69578A00F46A15 /* XMGLrcView.m */,
 				2B41D24E1E6968B400027054 /* XMGLrcCell.h */,
 				2B41D24F1E6968B400027054 /* XMGLrcCell.m */,
+				2BFA43811E6AF8A400D3A131 /* XMGLrcLabel.h */,
+				2BFA43821E6AF8A400D3A131 /* XMGLrcLabel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -595,6 +600,7 @@
 				2BCC21261E686B3500F46A15 /* MASViewConstraint.m in Sources */,
 				2BCC21411E689AF600F46A15 /* NSString+XMGTimeExtension.m in Sources */,
 				2BCC21251E686B3500F46A15 /* MASViewAttribute.m in Sources */,
+				2BFA43831E6AF8A400D3A131 /* XMGLrcLabel.m in Sources */,
 				2BCC21291E686B3500F46A15 /* View+MASAdditions.m in Sources */,
 				2BCC21331E686B3500F46A15 /* XMGAudioTool.m in Sources */,
 				2BCC21201E686B3500F46A15 /* XMGMusic.m in Sources */,

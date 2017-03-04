@@ -14,6 +14,7 @@
 #import "NSString+XMGTimeExtension.h"
 #import "CALayer+PauseAimate.h"
 #import "XMGLrcView.h"
+#import "XMGLrcLabel.h"
 
 #define XMGColor(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
 
@@ -27,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *progressSlider;
 @property (weak, nonatomic) IBOutlet UIButton *playOrPauseButton;
 @property (weak, nonatomic) IBOutlet XMGLrcView *lrcView;
-@property (weak, nonatomic) IBOutlet UILabel *lrcLabel;
+@property (weak, nonatomic) IBOutlet XMGLrcLabel *lrcLabel;
 
 /** 定时器 */
 @property (nonatomic, strong) NSTimer *progressTimer;
@@ -64,6 +65,7 @@
     
     // 4. 设置lrcView的contentSize
     self.lrcView.contentSize = CGSizeMake(self.view.bounds.size.width * 2, 0);
+    self.lrcView.lrcLabel = self.lrcLabel;
 }
 
 
@@ -222,6 +224,7 @@
         [self.currentPlayer pause];
         
         [self removeProgressTimer];
+        [self removeLrcTimer];
         
         // 暂停动画
         [self.iconView.layer pauseAnimate];
@@ -229,6 +232,7 @@
         [self.currentPlayer play];
         
         [self addProgressTimer];
+        [self removeLrcTimer];
         
         // 恢复动画
         [self.iconView.layer resumeAnimate];

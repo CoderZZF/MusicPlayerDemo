@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class XMGLrcLabel;
 
 @interface XMGLrcCell : UITableViewCell
+
+@property (nonatomic, weak, readonly) XMGLrcLabel *lrcLabel;
 
 + (instancetype)lrcCellWithTableView:(UITableView *)tableView;
 
