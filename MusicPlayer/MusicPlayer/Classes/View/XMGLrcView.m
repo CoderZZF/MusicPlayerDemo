@@ -12,6 +12,9 @@
 #import "XMGLrcTool.h"
 #import "XMGLrcLine.h"
 #import "XMGLrcLabel.h"
+#import "XMGMusic.h"
+#import "XMGMusicTool.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface XMGLrcView () <UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -41,7 +44,7 @@
 
 - (void)setupTableView {
     // 创建tableView
-    UITableView *tableView = [[UITableView alloc] init];    
+    UITableView *tableView = [[UITableView alloc] init];
     tableView.backgroundView = nil;
     tableView.backgroundColor = [UIColor clearColor];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -150,6 +153,9 @@
             
             // 5. 设置外面歌词的label的显示歌词和时间
             self.lrcLabel.text = currentLrcLine.text;
+            
+            // 6. 生成锁屏界面的图片
+            [self generateLockImage];
         }
         
         // 4. 根据进度显示label要画多少
@@ -166,5 +172,75 @@
             self.lrcLabel.progress = progress;
         }
     }
+}
+
+
+#pragma mark - 生成锁屏界面的图片
+- (void)generateLockImage {
+    // 1. 拿到当前歌曲的图片
+    XMGMusic *playingMusic = [XMGMusicTool playingMusic];
+    UIImage *currentImage = [UIImage imageNamed:playingMusic.icon];
+    
+    // 2. 拿到三句歌词
+    // 2.1 获取当前的歌词
+    XMGLrcLine *currentLrc = self.lrcList[self.currentIndex];
+    // 2.2 拿到上一句歌词
+    NSInteger previousIndex = self.currentIndex - 1;
+    XMGLrcLine *previousLrc = nil;
+    if (previousIndex >= 0) {
+        previousLrc = self.lrcList[previousIndex];
+    }
+    
+    // 2.3 拿到下一句歌词
+    NSInteger nextIndex = self.currentIndex + 1;
+    XMGLrcLine *nextLrc = nil;
+    if (nextIndex < self.lrcList.count) {
+        nextLrc = self.lrcList[nextIndex];
+    }
+    
+    // 3. 生成水印图片
+    // 3.1 获取上下文
+    UIGraphicsBeginImageContext(currentImage.size);
+    // 3.2 将图片画上去
+    [currentImage drawInRect:CGRectMake(0, 0, currentImage.size.width, currentImage.size.height)];
+    // 3.3 将歌词画到图片上
+    CGFloat titleH = 25;
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.alignment = NSTextAlignmentCenter;
+    NSDictionary *attribute1 = @{NSFontAttributeName : [UIFont systemFontOfSize:14], NSForegroundColorAttributeName : [UIColor lightGrayColor], NSParagraphStyleAttributeName : style};
+    // 上一句
+    [previousLrc.text drawInRect:CGRectMake(0, currentImage.size.height - 3 * titleH, currentImage.size.width, titleH) withAttributes:attribute1];
+    // 下一句
+    [nextLrc.text drawInRect:CGRectMake(0, currentImage.size.height - titleH, currentImage.size.width, titleH) withAttributes:attribute1];
+    // 当前句
+    NSDictionary *attribute2 = @{NSFontAttributeName : [UIFont systemFontOfSize:16], NSForegroundColorAttributeName : [UIColor whiteColor], NSParagraphStyleAttributeName : style};
+    [currentLrc.text drawInRect:CGRectMake(0, currentImage.size.height - 2 * titleH, currentImage.size.width, titleH) withAttributes:attribute2];
+    
+    // 4. 生成图片
+    UIImage *lockImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // 5. 设置锁屏信息
+    [self setupLockScreenInfoWithLockImage:lockImage];
+    
+}
+
+- (void)setupLockScreenInfoWithLockImage:(UIImage *)lockImage {
+    // 0. 获取当前正在播放的歌曲
+    XMGMusic *playingMusic = [XMGMusicTool playingMusic];
+    
+    // 1. 获取锁屏界面中心
+    MPNowPlayingInfoCenter *playingInfoCenter = [MPNowPlayingInfoCenter defaultCenter];
+    
+    // 2. 设置展示的信息
+    NSMutableDictionary *playingInfo = [NSMutableDictionary dictionary];
+    [playingInfo setObject:playingMusic.name forKey:MPMediaItemPropertyAlbumTitle];
+    [playingInfo setObject:playingMusic.singer forKey:MPMediaItemPropertyArtist];
+    MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc] initWithImage:lockImage];
+    [playingInfo setObject:artwork forKey:MPMediaItemPropertyArtwork];
+    [playingInfo setObject:@(self.duration) forKey:MPMediaItemPropertyPlaybackDuration];
+    playingInfoCenter.nowPlayingInfo = playingInfo;
+    
+    // 3. 让应用程序可以接受远程事件
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 }
 @end

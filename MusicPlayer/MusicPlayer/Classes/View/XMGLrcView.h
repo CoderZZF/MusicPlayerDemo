@@ -19,4 +19,7 @@
 /** 传入歌词的label */
 @property (nonatomic, weak) XMGLrcLabel *lrcLabel;
 
+/** 歌曲的总时长 */
+@property (nonatomic, assign) NSTimeInterval duration;
+
 @end
