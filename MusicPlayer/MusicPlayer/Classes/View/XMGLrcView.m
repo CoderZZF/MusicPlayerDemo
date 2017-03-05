@@ -102,12 +102,14 @@
 
 #pragma mark - 重写setLrcName方法
 - (void)setLrcName:(NSString *)lrcName {
+    // 0. 重置保存当前位置的下标值
+    self.currentIndex = 0;
+    
     // 1. 保存歌词名称
     _lrcName = lrcName;
     
     // 2. 解析歌词
     self.lrcList = [XMGLrcTool lrcToolWithLrcName:lrcName];
-    
     
     // 3. 刷新表格
     [self.tableView reloadData];
