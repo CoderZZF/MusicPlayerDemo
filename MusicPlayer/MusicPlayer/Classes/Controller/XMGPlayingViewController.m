@@ -19,7 +19,7 @@
 
 #define XMGColor(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
 
-@interface XMGPlayingViewController () <UIScrollViewDelegate>
+@interface XMGPlayingViewController () <UIScrollViewDelegate, AVAudioPlayerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *albumView;
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
 @property (weak, nonatomic) IBOutlet UILabel *songLabel;
@@ -112,6 +112,7 @@
     
     // 3. 开始播放歌曲
     AVAudioPlayer *currentPlayer = [XMGAudioTool playMusicWithMusicName:playingMusic.filename];
+    currentPlayer.delegate = self;
     self.totalTimeLabel.text = [NSString stringWithTime:currentPlayer.duration];
     self.currentTimeLabel.text = [NSString stringWithTime:currentPlayer.currentTime];
     self.currentPlayer = currentPlayer;
@@ -284,6 +285,14 @@
     // 3. 设置iconView和歌词label的透明度
     self.iconView.alpha = ratio;
     self.lrcLabel.alpha = ratio;
+}
+
+
+#pragma mark - AVAudioPlayer的代理方法
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    if (flag) {
+        [self next];
+    }
 }
 
 #pragma mark - 设置锁屏界面的信息

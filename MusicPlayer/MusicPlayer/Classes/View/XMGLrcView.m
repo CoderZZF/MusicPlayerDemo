@@ -238,6 +238,8 @@
     MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc] initWithImage:lockImage];
     [playingInfo setObject:artwork forKey:MPMediaItemPropertyArtwork];
     [playingInfo setObject:@(self.duration) forKey:MPMediaItemPropertyPlaybackDuration];
+    [playingInfo setObject:@(self.currentTime) forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+    
     playingInfoCenter.nowPlayingInfo = playingInfo;
     
     // 3. 让应用程序可以接受远程事件
